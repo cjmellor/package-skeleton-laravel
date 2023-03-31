@@ -224,6 +224,10 @@ foreach ($files as $file) {
     };
 }
 
+replace_in_file(__DIR__.'/rector.php', [
+    ':laravel_version' => $laravelVersion,
+]);
+
 if (! $useRector) {
     safeUnlink(__DIR__.'/rector.php');
 

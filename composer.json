@@ -21,6 +21,7 @@
         "illuminate/contracts": "^10.0"
     },
     "require-dev": {
+        "driftingly/rector-laravel": "^0.17.0",
         "laravel/pint": "^1.7",
         "nunomaduro/collision": "^7.3.3",
         "nunomaduro/larastan": "^2.5.1",
