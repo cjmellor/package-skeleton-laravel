@@ -1,4 +1,4 @@
-name: run-tests
+name: "Tests"
 
 on:
   push:
@@ -15,15 +15,16 @@ jobs:
         os: [ ubuntu-latest ]
         php: [ 8.2, 8.1 ]
         laravel: [ 10, 9 ]
+        stability: [ prefer-lowest, prefer-stable ]
         include:
-          - laravel: 10.*
-            testbench: 8.*
+          - laravel: ^10.0
+            testbench: ^8.0
             carbon: ^2.63
-          - laravel: 9.*
-            testbench: 7.*
+          - laravel: ^9.0
+            testbench: ^7.0
             carbon: ^2.63
 
-    name: "PHP: v${{ matrix.php }} / Laravel: v${{ matrix.laravel }} on ${{ matrix.os }}"
+    name: "PHP: v${{ matrix.php }} / Laravel: v${{ matrix.laravel }} - ${{ matrix.stability }}"
 
     steps:
       - name: Checkout code
@@ -35,11 +36,6 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
           coverage: none
-
-      - name: Setup problem matchers
-        run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: Install dependencies
         run: |

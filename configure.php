@@ -158,7 +158,10 @@ $className = ask('Class name', $className);
 $variableName = lcfirst($className);
 $description = ask('Package description', "This is my package $packageSlug");
 
-$laravelVersion = ask('Laravel Version', '10.0');
+$laravelVersion = ask('Laravel Version', '10');
+if (str_ends_with($laravelVersion, '.0')) {
+    $laravelVersion = substr($laravelVersion, 0, -2);
+}
 
 $useDependabot = confirm('Enable Dependabot?', true);
 $useUpdateChangelogWorkflow = confirm('Use CHANGELOG Updater workflow?', true);
@@ -224,12 +227,16 @@ foreach ($files as $file) {
     };
 }
 
+replace_in_file(__DIR__.'/rector.php', [
+    ':laravel_version' => $laravelVersion,
+]);
+
 if (! $useRector) {
     safeUnlink(__DIR__.'/rector.php');
 
     remove_composer_deps(['rector/rector']);
 
-    remove_composer_script('lint');
+    remove_composer_script('format');
 }
 
 if (! $useLaravelPint) {

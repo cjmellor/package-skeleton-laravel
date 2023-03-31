@@ -21,6 +21,7 @@
         "illuminate/contracts": "^10.0"
     },
     "require-dev": {
+        "driftingly/rector-laravel": "^0.17.0",
         "laravel/pint": "^1.7",
         "nunomaduro/collision": "^7.3.3",
         "nunomaduro/larastan": "^2.5.1",
@@ -46,8 +47,8 @@
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
-        "format": "vendor/bin/pint",
-        "lint": "vendor/bin/rector process",
+        "lint": "vendor/bin/pint",
+        "format": "vendor/bin/rector process",
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage"
@@ -69,6 +70,6 @@
             }
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
