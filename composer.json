@@ -47,8 +47,8 @@
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
-        "format": "vendor/bin/pint",
-        "lint": "vendor/bin/rector process",
+        "lint": "vendor/bin/pint",
+        "format": "vendor/bin/rector process",
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage"
@@ -70,6 +70,6 @@
             }
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
