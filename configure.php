@@ -267,6 +267,8 @@ if (! $useUpdateChangelogWorkflow) {
     safeUnlink(__DIR__.'/.github/workflows/update-changelog.yml');
 }
 
+confirm('Bump up Composer dependencies?') && run('composer bump');
+
 confirm('Execute `composer install`?') && run('composer install');
 
 confirm('Let this script delete itself?', true) && unlink(__FILE__);
