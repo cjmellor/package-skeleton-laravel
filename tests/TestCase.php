@@ -28,6 +28,8 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
+        // TODO: Uncomment to use
+        
         /*
         $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
         $migration->up();
