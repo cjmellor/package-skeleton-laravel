@@ -13,7 +13,7 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/config',
         __DIR__ . '/database',
         __DIR__ . '/resources',
-        // __DIR__ . '/routes',
+        __DIR__ . '/routes',
         __DIR__ . '/src',
         __DIR__ . '/tests',
     ]);
