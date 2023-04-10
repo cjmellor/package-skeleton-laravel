@@ -241,6 +241,8 @@ if (! $useRector) {
 
 if (! $useLaravelPint) {
     safeUnlink(__DIR__.'/pint.json');
+
+    remove_composer_deps(['laravel/pint']);
 }
 
 if (! $usePhpStan) {
@@ -267,7 +269,7 @@ if (! $useUpdateChangelogWorkflow) {
     safeUnlink(__DIR__.'/.github/workflows/update-changelog.yml');
 }
 
-confirm('Bump up Composer dependencies?') && run('composer bump');
+confirm('Bump up Composer dependencies? (require-dev only)') && run('composer bump --dev-only');
 
 confirm('Execute `composer install`?') && run('composer install');
 
